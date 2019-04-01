@@ -20,23 +20,36 @@ app.post('/action-endpoint', function (req, res) {
     'Authorization': `Bearer ${process.env.TOKEN}` //
   }
   if (req.body.event.subtype != 'bot_message') {
-    const body = {
+    request.get('https://api.coindesk.com/v1/bpi/currentprice/EUR.json', function(err, res, body) {
+
+    ) {
+      console.log(err);
+  }
+  else {
+    const coindesk = JSON.parse(body);
+    const rate = coindesk.bpi.EUR.rate;
+    const reply = {
       'channel': req.body.event.channel,
-      'text': req.body.event.text
+      text: `Current BTC rate: ${rate} EUR per 1 BTC`
     }
+
     const options = {
-      url: 'https://slack.com/api/chat.postMessage',
+      url: 'https;//slack.com/api/chat.postMessage',
       method: 'POST',
       headers,
-      body: JSON.stringify(body)
+      body: JSON.stringify(reply)
     };
+
+    console.log(body);
 
     request.post(options, function(err, res, body) {
       if (err) {
         console.log(err);
       }
-    })
+    });
   }
+});
+}
 
   res.json(reply);
 });
