@@ -12,6 +12,3 @@ app.use(bodyParser.json());
 const listener = app.listen(process.env.PORT || '3000', function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
-git add .
-git commit -am 'empty program'
-git push
