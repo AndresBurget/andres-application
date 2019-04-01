@@ -19,7 +19,7 @@ app.post('/action-endpoint', function (req, res) {
     'Content-type': 'application/json',
     'Authorization': `Bearer ${process.env.TOKEN}` //
   }
-  if (req.bidy.event.subtype != 'bot_message') {
+  if (req.body.event.subtype != 'bot_message') {
     const body = {
       'channel': req.body.event.channel,
       'text': req.body.event.text
