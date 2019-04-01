@@ -33,7 +33,7 @@ app.post('/action-endpoint', function (req, res) {
         }
 
         const options = {
-          url: 'https;//slack.com/api/chat.postMessage',
+          url: 'https://slack.com/api/chat.postMessage',
           method: 'POST',
           headers,
           body: JSON.stringify(reply)
